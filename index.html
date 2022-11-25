@@ -1,0 +1,37 @@
+index.html
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+
+    function send() {
+
+      let fname = document.getElementById("fname").value;
+      let lname = document.getElementById("lname").value;
+      console.log(fname);
+      console.log(lname);
+      let user = { "fname": fname, "lname": lname };
+      //https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+      //use relative paths: https://www.w3schools.com/html/html_filepaths.asp
+      fetch('/result', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user)
+      })
+        // .then(response => response.text()) //if   response.sendStatus(202) in endpoint -> this gives only "Accepted" as response, i.e. not json;
+        .then(response => response.json()) // Converting response to JSON
+
+        // Displaying results to console
+        .then(data => console.log(data));
+    };
+  </script>
+</head>
+<body>
+  <h1>Send User Data</h1>
+  <input type="text" placeholder="First Name" id="fname" name="fname"><br><br>
+  <input type="text" placeholder="Last Name" id="lname" name="lname"><br><br>
+  <button onclick="send()">Click me</button>
+</body>
+</html>
