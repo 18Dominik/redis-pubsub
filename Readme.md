@@ -2,6 +2,9 @@
 
 nodejs app with redis pub/sub
 
+NoSQL vs. SQL: https://redis.com/nosql/what-is-nosql/
+Redis Docs: https://redis.io/docs/
+
 ## Purpose
 The app enables to set up a user in a frontend, save user name in redis database and publish a notification message via redis pub/sub to any subscriber. 
 
